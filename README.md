@@ -46,8 +46,9 @@ with a separate directory issued as a storage plane; you may override the use of
 the home directory for these purposes by using this parameter.  You may also 
 use the long parameter --home
 
-* REQUIREMENTS
+* ARCHITECTURE, INPUT, OUTPUT, SCRIPT
 
-outputs the requirements of the container as a JSON array.  During the %post
-phase, the file /REQUIREMENTS should be created which contains this JSON array.  A nonexistent REQUIREMENTS file implies that there are no requirements and the
-container should run on almost any platform
+sends to stdout various requirements and specs of the container as a JSON array.
+During the %post phase, corresponding files in the root directory (/) should
+contain the responses.  A nonexistent files implies that matching requirements
+is the responsibility of the user.
