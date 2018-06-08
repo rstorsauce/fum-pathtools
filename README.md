@@ -41,7 +41,13 @@ into a zip file instead by using this parameter.
 
 * -h <home_dir>
 
-Sometimes IT will force singularity container to be run in "contained" mode, with 
-a separate directory issued as a storage plane; you may override the use of the
-home directory for these purposes by using this parameter.  You may also use
-the long parameter --home
+Sometimes IT will force singularity container to be run in "contained" mode,
+with a separate directory issued as a storage plane; you may override the use of
+the home directory for these purposes by using this parameter.  You may also 
+use the long parameter --home
+
+* REQUIREMENTS
+
+outputs the requirements of the container as a JSON array.  During the %post
+phase, the file /REQUIREMENTS should be created which contains this JSON array.  A nonexistent REQUIREMENTS file implies that there are no requirements and the
+container should run on almost any platform
