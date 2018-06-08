@@ -20,6 +20,13 @@ script_dir="/script"
 output_dir="/output"
 force_zip_output="no"
 
+output_reqs(){
+  if [ -f /REQUIREMENTS ]; then
+    cat /REQUIREMENTS
+  fi
+  exit
+}
+
 while true; do
   case "$1" in
     -i | --input)  input_dir="$2"; shift; shift;;
@@ -28,6 +35,7 @@ while true; do
     -h | --home)   home_dir="$2"; shift; shift;;
     "") break;;
     --force-zip-output) force_zip_output="yes"; shift;;
+    REQUIREMENTS) output_reqs;;
     *) shift;;
   esac
 done
