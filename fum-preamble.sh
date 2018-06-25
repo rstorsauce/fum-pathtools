@@ -70,8 +70,10 @@ if [ ! -d "$script_dir" ]; then
 fi
 
 if [ ! "$output_dir" = "/output" ]; then
-  usr_output="$output_dir"
-  output_dir=`mktemp -d`
+  if [ ! "$output_dir" = "/output/output"]; then
+    usr_output="$output_dir"
+    output_dir=`mktemp -d`
+  fi
 fi
 
 export input_dir
