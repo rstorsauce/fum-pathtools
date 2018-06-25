@@ -20,14 +20,18 @@ script_dir="/script"
 output_dir="/output"
 force_zip_output="no"
 
-report(){
-  if [ -f "/$1" ]; then
-    cat "/$1"
+metadata(){
+  if [ -f "$script_dir/.METADATA" ]; then
+    if [ -x "$script_dir/.METADATA" ]; then
+      "$script_dir/.METADATA"
+    else
+      cat "$script_dir/.METADATA"
+    fi
+  elif [ -f "/METADATA" ]; then
+    cat "/METADATA"
   fi
   exit
 }
-
-
 
 while true; do
   case "$1" in
@@ -37,10 +41,7 @@ while true; do
     -h | --home)   home_dir="$2"; shift; shift;;
     "") break;;
     --force-zip-output) force_zip_output="yes"; shift;;
-    ARCHITECTURE) report ARCHITECTURE;;
-    INPUT) report INPUT;;
-    OUTPUT) report OUTPUT;;
-    SCRIPT) report SCRIPT;;
+    METADATA) metadata;;
     *) shift;;
   esac
 done
