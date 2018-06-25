@@ -10,9 +10,19 @@
 # -i, --input         - override /input  as an input directory and take a file or archive as input
 # -s, --script        - override /script as a script directory and take a file or archive as input
 # -o, --output        - override /output as a result directory and store to an archive or file
+# -h, --home          - override base home directory
 #
 # --force-zip-output  - forces the output to be stored as a zip file, in the case when only one file is output
 #
+#  METADATA           - return METADATA.  METADATA could be one of the following:
+#                       - /script/.METADATA
+#                       - /METADATA
+#                       - empty object {}
+#                       /METADATA should be a static json file, .METADATA if
+#                       executable, should augment the /METADATA json and add
+#                       further dependencies, outputting to standard out, or
+#                       could be a static json file itself.
+
 
 home_dir=~
 input_dir="/input"
@@ -29,6 +39,8 @@ metadata(){
     fi
   elif [ -f "/METADATA" ]; then
     cat "/METADATA"
+  else
+    echo "{}"
   fi
   exit
 }
