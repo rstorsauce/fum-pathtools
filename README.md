@@ -19,8 +19,6 @@ parameter checking enabling command-line substitution of these directories.
     < normal runscript code using $input_dir, $script_dir, $output_dir variables >
     ...
 
-    path/to/scripts/fum-coda.sh
-
 
 ### When running a container (typical usage)
 
